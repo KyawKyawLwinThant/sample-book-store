@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html th:replace="layout/userViewLayout :: layout(~{::main})" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<main role="main">
+    <div class="container my-4 bg-light">
+        <div class="row">
+            <div class="col-md-4" th:each="bo :${books}">
+                <div class="card shadow mb-3">
+                    <img th:src="${bo.imgUrl}" alt="" class="card-img-top">
+                    <div class="card-body">
+                        <h3 class="card-title" th:text="${#strings.substring(bo.title,0,7) + '...'}"></h3>
+                        <div class="d-flex justify-content-between p-3">
+                            <p class="card-text" th:text="${'$'+ bo.price}"></p>
+                            <p class="card-text"><a th:href="@{'/user/book?id='+${bo.id}}">Details</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

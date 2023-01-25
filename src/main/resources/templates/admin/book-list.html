@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html th:replace="layout/adminLayout :: layout(~{::main})" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<main role="main">
+    <div class="container my-5">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Book List</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive-sm">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Title</th>
+                                    <th>YearPublished</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Category</th>
+                                    <th>Author</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="bo :${books}">
+                                    <td th:text="${bo.id}"></td>
+                                    <td th:text="${bo.title}"></td>
+                                    <td th:text="${bo.yearPublished}"></td>
+
+                                    <td th:text="${'$'+bo.price}"></td>
+                                    <td th:text="${bo.quantity}"></td>
+                                    <td th:text="${bo.category.categoryName}"></td>
+                                    <td th:text="${bo.author.name}"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a th:href="@{/admin/book-form}" class="btn btn-primary btn-block">New Book</a>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+</main>
+</body>
+</html>

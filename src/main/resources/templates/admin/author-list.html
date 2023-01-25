@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html th:replace="layout/adminLayout :: layout(~{::main})" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<main role="main">
+    <div class="container my-5 bg-light">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Author List</h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-striped">
+                            <thead class="bg-danger text-white">
+                            <tr>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Date Of Brith</th>
+                                <th>Gender</th>
+                                <th>Phone Number</th>
+                                <th>Street Name</th>
+                                <th>Country</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="au :${authors}">
+                                <td th:text="${au.id}"></td>
+                                <td th:text="${au.name}"></td>
+                                <td th:text="${au.dateOfBirth}"></td>
+                                <td th:text="${au.gender}"></td>
+                                <td th:text="${au.address.phoneNumber}"></td>
+                                <td th:text="${au.address.streetName}"></td>
+                                <td th:text="${au.address.country}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-footer">
+                        <a class="btn btn-primary btn-block"
+                           th:href="@{/admin/author-form}">New Author</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

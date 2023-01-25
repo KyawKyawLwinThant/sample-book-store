@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html th:replace="layout/userViewLayout :: layout(~{::main})" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<main role="main">
+  <div class="container my-5 bg-light p-5">
+    <div class="row">
+      <div class="col-md-6">
+        <img th:src="${book.imgUrl}" class="img-fluid p-3" alt="Image">
+      </div>
+      <div class="col-md-6">
+        <h3 th:text="${book.title}"></h3>
+        <p class="lead" th:text="${'by-'+ book.author.name}"></p>
+        <p class="text-muted">It's cost &nbsp;<span th:text="${'$'+ book.price}"></span></p>
+        <p class="text-muted" th:text="${book.description}"></p>
+        <p class="text-muted">It's published in
+          <span th:text="${book.yearPublished}"></span> </p>
+        <p class="text-muted">Published By :: <span th:text="${book.publisher}"></span></p>
+        <p class="text-muted lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, ipsam.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <a th:href="@{'/cart/add-to-cart?id='+${book.id}}" class="btn btn-outline-info mr-3">Add to Cart</a>
+        <a th:href="@{/user/book/all}" class="btn btn-outline-primary mr-3">Continue Shopping</a>
+        <a href="#">View Cart</a>
+      </div>
+    </div>
+  </div>
+</main>
+</body>
+</html>

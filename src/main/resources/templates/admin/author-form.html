@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html th:replace="layout/adminLayout :: layout(~{::main})"  xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<main role="main">
+    <div class="container my-5 bg-light">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Author Form</h3>
+                    </div>
+                    <div class="card-body">
+                        <form action="#" th:action="@{/admin/author-form}"
+                        th:object="${author}" method="post">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name"
+                                       class="form-control"
+                                       th:classappend="${#fields.hasErrors('name')} ? 'is-invalid'"
+                                       th:field="*{name}">
+                                <small th:if="${#fields.hasErrors('name')}" class="invalid-feedback"
+                                th:errors="*{name}"></small>
+                            </div>
+                            <div class="form-group">
+                                <label for="dob">Date of Birth</label>
+                                <input type="date"  id="dob" class="form-control"
+                                       th:field="*{dateOfBirth}">
+                            </div>
+                            <div class="form-group">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" name="gen" th:field="*{gender}" th:value="${T(com.example.bookstoredemo.entity.Gender).MALE}" type="radio">
+                                    <label class="form-check-label">Male</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" name="gen" th:field="*{gender}" th:value="${'FEMALE'}" type="radio">
+                                    <label class="form-check-label">Female</label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="streetname">Street Name</label>
+                                <input type="text" id="streetname"
+                                       th:classappend="${#fields.hasErrors('address.streetName')}? 'is-invalid'"
+                                       class="form-control"
+                                th:field="*{address.streetName}">
+                                <small th:if="${#fields.hasErrors('address.streetName')}"
+                                th:errors="*{address.streetName}"></small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phonenumber">Phone Number</label>
+                                <input type="text" id="phonenumber"
+                                       th:classappend="${#fields.hasErrors('address.phoneNumber')}? 'is-invalid'"
+                                       class="form-control"
+                                       th:field="*{address.phoneNumber}">
+                                <small th:if="${#fields.hasErrors('address.phoneNumber')}"
+                                       th:errors="*{address.phoneNumber}"></small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="country">Country</label>
+                                <input type="text" id="country"
+                                       th:classappend="${#fields.hasErrors('address.country')}? 'is-invalid'"
+                                       class="form-control"
+                                       th:field="*{address.country}">
+                                <small th:if="${#fields.hasErrors('address.country')}"
+                                       th:errors="*{address.country}"></small>
+                            </div>
+
+                            <input type="submit" class="btn btn-success btn-lg" value="Save Author">
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>
