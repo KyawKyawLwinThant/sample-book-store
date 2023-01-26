@@ -20,6 +20,13 @@ public class CartService {
     public void addToCart(int id) {
         cartBean.addToCart(toDto(bookDao.findById(id).get()));
     }
+    public void removeFromCart(BookDto bookDto){
+        cartBean.removeBook(bookDto);
+    }
+
+    public void clearCart(){
+        cartBean.clearCart();
+    }
 
     public Set<BookDto> listCart(){
         return cartBean.listAllCarts();
