@@ -15,7 +15,7 @@
 <div th:replace="fragments/header.html :: headview"></div>
 
      <div class="container">
-         <div class="d-flex justify-content-end mt-3">
+         <div class="d-flex justify-content-end mt-3" th:if="${carts!=null}">
              <h3><a th:href="@{/cart/view}"><i class="fas fa-cart-plus"></i> </a>&nbsp; <span class="badge badge-primary" th:text="${carts.size()}"></span></h3>
          </div>
      </div>

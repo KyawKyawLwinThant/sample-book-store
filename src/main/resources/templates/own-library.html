@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html th:replace="layout/userViewLayout :: layout(~{::main})" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<main role="main">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 th:text="${'Login User :: '+ name}"></h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Author Name</th>
+                                    <th>Title</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Cost</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="bo :${books}">
+                                <td th:text="${bo.authorName}"></td>
+                                <td th:text="${bo.title}"></td>
+                                <td th:text="${'$'+bo.price}"></td>
+                                <td th:text="${bo.quantity}"></td>
+                                <td th:text="${'$'+(bo.quantity*bo.price)}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>
