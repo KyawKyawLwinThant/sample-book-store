@@ -4,8 +4,10 @@
 <body>
 <main role="main">
   <div class="container my-4 bg-light">
+    <form th:action="@{/cart/checkout}" th:object="${bookDto}" method="post">
     <div th:with="items =${carts}">
       <div th:if="${!items.isEmpty()}">
+
         <table class="table table-striped">
           <thead>
           <tr>
@@ -13,6 +15,7 @@
             <th>Title</th>
             <th>Author</th>
             <th>Price</th>
+            <th>Quantity</th>
             <th>Action</th>
           </tr>
           </thead>
@@ -22,10 +25,12 @@
             <td th:text="${bo.title}"></td>
             <td th:text="${bo.author.name}"></td>
             <td th:text="${'$'+ bo.price}"></td>
+            <th><input type="number" min="1" class="form-check" th:field="*{itemList}"></th>
             <td><a th:href="@{'/cart/delete?id='+${bo.id}}" class="btn btn-outline-danger">Delete</a></td>
           </tr>
           </tbody>
         </table>
+
       </div>
       <div th:unless="${!items.isEmpty()}">
         <h1 class="text-info text-center">No Content</h1>
@@ -35,11 +40,12 @@
 
     <div class="row">
       <div class="col-md-12">
-        <a href="#" class="btn btn-outline-primary mr-2">CheckOut</a>
+        <input type="submit" class="btn btn-outline-primary mr-2" value="Checkout"></a>
         <a th:href="@{/user/book/all}" class="btn btn-outline-secondary mr-2">Continue Shopping</a>
         <a th:href="@{/cart/clear}" class="btn btn-outline-info mr-2">Clear Cart</a>
       </div>
     </div>
+    </form>
   </div>
 </main>
 </body>
